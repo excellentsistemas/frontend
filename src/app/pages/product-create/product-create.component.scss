@@ -1,0 +1,28 @@
+.image-container {
+  max-width: 440px;
+  overflow: auto;
+  margin: auto;
+  margin-top: auto;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  img {
+    object-fit: contain;
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 440px;
+  margin: auto;
+}
+
+.btn-add-image {
+  width: 100%;
+  button {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}

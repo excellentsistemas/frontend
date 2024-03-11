@@ -1,0 +1,42 @@
+<h2>Lista de Pedidos</h2>
+
+<section class="actions">
+  <button color="primary" type="submit" mat-raised-button (click)="newDemand()">
+    <mat-icon>add</mat-icon>Novo Pedido
+  </button>
+</section>
+<section class="card-container">
+  @for (demand of listDemand; track $index) {
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Pedido</mat-card-title>
+        <mat-card-subtitle>{{ demand.guid }}</mat-card-subtitle>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        @for (item of demand.demandProducts; track $index) {
+        <mat-list-item>
+          <span matListItemTitle>{{ item.product.description }}</span>
+          <span matListItemLine
+            >{{ item.amount }} x {{ item.product.saleValue | currency }} =
+            {{ item.amount * item.product.saleValue }}
+          </span>
+        </mat-list-item>
+        }
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="deleteDemand(demand.guid)"
+      >
+        EXCLUIR
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  }
+</section>

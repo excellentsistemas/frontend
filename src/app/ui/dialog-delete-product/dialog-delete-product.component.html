@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>ATENÇÃO</h2>
+<mat-dialog-content>Deseja deletar o produto?</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button (click)="confirm()" mat-button>SIM</button>
+  <button (click)="cancel()" mat-button mat-dialog-close cdkFocusInitial>
+    NÃO
+  </button>
+</mat-dialog-actions>

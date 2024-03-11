@@ -1,0 +1,52 @@
+<form [formGroup]="formGroup" class="form-container">
+  <h2>Novo Produto</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Descrição</mat-label>
+    <input autofocus type="text" formControlName="description" matInput />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Valor de Venda</mat-label>
+    <input type="number" formControlName="saleValue" matInput />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Estoque</mat-label>
+    <input type="number" formControlName="stock" matInput />
+  </mat-form-field>
+
+  <div class="btn-add-image">
+    <input hidden type="file" #fileImage (change)="addImage($event)" />
+    <button type="button" mat-raised-button (click)="fileImage.click()">
+      Adicionar Imagem
+    </button>
+  </div>
+  <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">
+    Salvar
+  </button>
+</form>
+
+<div class="image-container">
+  @if (images.length) {
+  <h3>Imagens</h3>
+  } @for (image of images; track $index) {
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-subtitle>{{ image.file.name }}</mat-card-subtitle>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <img mat-card-xl-image [src]="image.data" />
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        type="button"
+        mat-raised-button
+        color="warn"
+        (click)="removeImage(image)"
+      >
+        REMOVER
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>
